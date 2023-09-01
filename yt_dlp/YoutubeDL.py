@@ -3368,15 +3368,14 @@ class YoutubeDL:
         for url in url_list:
             self.__download_wrapper(self.extract_info)(
                 url, force_generic_extractor=self.params.get('force_generic_extractor', False))
-        
         # add interactive input to download if we show list available format
         if sys.argv[1] == '-F':
-            
             print('\ntype q to exit')
-            choices = input('input your format: ')            
-            if choices == 'q': exit()
+            choices = input('input your format: ')
+            if choices == 'q':
+                exit()
 
-            ydlp_command = ["yt-dlp", "-f",choices, sys.argv[2]]
+            ydlp_command = ["yt-dlp", "-f", choices, sys.argv[2]]
 
             try:
                 subprocess.run(ydlp_command, check=True)
